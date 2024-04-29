@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgt4erjwd87a2"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_g36sn"]
+[ext_resource type="PackedScene" uid="uid://yv53eeuel8ho" path="res://player.tscn" id="1_sv3tm"]
+[ext_resource type="Script" path="res://Walls.gd" id="2_keaxf"]
+
+[sub_resource type="Environment" id="Environment_vuc8w"]
+background_mode = 1
+background_color = Color(0.403903, 8.42288e-07, 9.62615e-08, 1)
+ambient_light_source = 1
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_g36sn")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
+size = Vector3(9, 1, 27)
+
+[node name="Player" parent="." instance=ExtResource("1_sv3tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 2)
+environment = SubResource("Environment_vuc8w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.641457, -0.711106, 0.287858, -0.183013, 0.506236, 0.842752, -0.74501, 0.487907, -0.45487, 0, 14, 0)
+shadow_enabled = true
+
+[node name="Walls" type="Node3D" parent="."]
+script = ExtResource("2_keaxf")
+
+[node name="WallSpawnTimer" type="Timer" parent="Walls"]
+autostart = true
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="timeout" from="Walls/WallSpawnTimer" to="Walls" method="_on_wall_spawn_timer_timeout"]
