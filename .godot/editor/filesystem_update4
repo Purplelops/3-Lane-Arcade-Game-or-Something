@@ -1,7 +1,6 @@
 res://main.tscn
 res://player.tscn
 res://wall.tscn
-res://wall.gd
-res://Walls.gd
 res://main.gd
-res://Ideas.txt
+res://player.gd
+res://death_effect.tscn

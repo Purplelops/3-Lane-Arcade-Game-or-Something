@@ -6,6 +6,7 @@ var wall_speed: int = 10
 var skip_next_walls: bool = false
 var max_wall_speed: int = 40
 
+
 func _spawn_walls(spd):
 	var no_wall: int = randi_range(0, 2)
 	
