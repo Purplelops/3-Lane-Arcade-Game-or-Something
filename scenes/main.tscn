@@ -15,13 +15,12 @@ albedo_color = Color(0.328572, 0.635471, 5.77569e-07, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5ng"]
 albedo_color = Color(0.698327, 0.463447, 0.193027, 1)
 
-[sub_resource type="Environment" id="Environment_vuc8w"]
-background_mode = 1
-background_color = Color(0.403903, 8.42288e-07, 9.62615e-08, 1)
-fog_enabled = true
-
 [sub_resource type="LabelSettings" id="LabelSettings_qkmq0"]
 font_size = 70
+
+[sub_resource type="Environment" id="Environment_y805a"]
+background_mode = 1
+background_color = Color(0.391605, 0.578691, 0.672685, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ybb3l")
@@ -54,7 +53,7 @@ size = Vector3(1, 2, 27)
 material = SubResource("StandardMaterial3D_uw5ng")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.98254, 0.0649766, 0.174338, -0.183013, 0.506236, 0.842752, -0.0334972, -0.859944, 0.509289, 0, 14, 0)
+transform = Transform3D(0.866025, -0.25, 0.433013, -0.12941, 0.724444, 0.677077, -0.482963, -0.642402, 0.595035, 0, 5, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_3472i")]
@@ -63,8 +62,7 @@ collision_mask = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 2)
-environment = SubResource("Environment_vuc8w")
-far = 200.0
+far = 35.82
 
 [node name="Walls" type="Node3D" parent="."]
 script = ExtResource("3_h2amn")
@@ -115,6 +113,9 @@ stream = ExtResource("4_c2e6b")
 
 [node name="CoinPickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fppyb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y805a")
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Walls/WallSpawnTimer" to="Walls" method="_on_wall_spawn_timer_timeout"]

@@ -1,3 +1,7 @@
+WorldEnvironment
+DirectionalLight3D
+SpotLight3D
+LightmapGI
 OmniLight3D
 AudioStreamPlayer
 Area3D
@@ -9,6 +13,3 @@ Label
 Control
 Button
 GPUParticles3D
-Marker3D
-CharacterBody3D
-AnimationPlayer
