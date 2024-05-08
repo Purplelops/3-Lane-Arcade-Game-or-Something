@@ -1,6 +1,8 @@
 extends Node3D
 
 var wall_scene: PackedScene = load("res://scenes/wall.tscn")
+var coin_scene: PackedScene = load("res://scenes/coin.tscn")
+
 var wall_positions: Array = [-3, 0, 3]
 var wall_speed: int = 10
 var skip_next_walls: bool = false
@@ -15,7 +17,11 @@ func _spawn_walls(spd):
 	else:
 		for i in range(3):
 			if no_wall == i:
-				pass
+				if randi_range(0, 2) == 1:
+					var coin = coin_scene.instantiate()
+					coin.position = Vector3(wall_positions[i], 1, -22)
+					coin.speed = spd
+					add_child(coin)
 			else:
 				var wall = wall_scene.instantiate()
 				wall.position = Vector3(wall_positions[i], 1, -22)

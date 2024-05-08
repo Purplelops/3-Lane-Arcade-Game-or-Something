@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgt4erjwd87a2"]
+[gd_scene load_steps=11 format=3 uid="uid://cgt4erjwd87a2"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ybb3l"]
 [ext_resource type="PackedScene" uid="uid://yv53eeuel8ho" path="res://scenes/player.tscn" id="2_3472i"]
-[ext_resource type="Script" path="res://scripts/Walls.gd" id="3_h2amn"]
+[ext_resource type="Script" path="res://scripts/walls.gd" id="3_h2amn"]
 [ext_resource type="AudioStream" uid="uid://ck03mwx1c8vm1" path="res://explosion.wav" id="4_c2e6b"]
+[ext_resource type="AudioStream" uid="uid://4iak5f4u42nn" path="res://pickupCoin.wav" id="5_fppyb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfrfa"]
 albedo_color = Color(0.137534, 0.709126, 0.29122, 1)
@@ -17,7 +18,6 @@ albedo_color = Color(0.698327, 0.463447, 0.193027, 1)
 [sub_resource type="Environment" id="Environment_vuc8w"]
 background_mode = 1
 background_color = Color(0.403903, 8.42288e-07, 9.62615e-08, 1)
-ambient_light_source = 1
 fog_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_qkmq0"]
@@ -53,16 +53,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -8.5)
 size = Vector3(1, 2, 27)
 material = SubResource("StandardMaterial3D_uw5ng")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.98254, 0.0649766, 0.174338, -0.183013, 0.506236, 0.842752, -0.0334972, -0.859944, 0.509289, 0, 14, 0)
+shadow_enabled = true
+
 [node name="Player" parent="." instance=ExtResource("2_3472i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 2)
 environment = SubResource("Environment_vuc8w")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.641457, -0.711106, 0.287858, -0.183013, 0.506236, 0.842752, -0.74501, 0.487907, -0.45487, 0, 14, 0)
-shadow_enabled = true
+far = 200.0
 
 [node name="Walls" type="Node3D" parent="."]
 script = ExtResource("3_h2amn")
@@ -110,6 +112,9 @@ autostart = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_c2e6b")
+
+[node name="CoinPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fppyb")
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Walls/WallSpawnTimer" to="Walls" method="_on_wall_spawn_timer_timeout"]
