@@ -8,5 +8,7 @@ func _process(delta: float) -> void:
 	if alive:
 		if Input.is_action_just_pressed("left") and position.x > -2:
 			position.x -= move_step
+			$AudioStreamPlayer.play()
 		elif Input.is_action_just_pressed("right") and position.x < 2:
 			position.x += move_step
+			$AudioStreamPlayer.play()

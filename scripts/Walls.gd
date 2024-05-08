@@ -1,6 +1,6 @@
 extends Node3D
 
-var wall_scene: PackedScene = load("res://wall.tscn")
+var wall_scene: PackedScene = load("res://scenes/wall.tscn")
 var wall_positions: Array = [-3, 0, 3]
 var wall_speed: int = 10
 var skip_next_walls: bool = false
@@ -24,7 +24,8 @@ func _spawn_walls(spd):
 
 
 func _on_wall_spawn_timer_timeout() -> void:
-	_spawn_walls(wall_speed)
+	if $"..".is_player_alive:
+		_spawn_walls(wall_speed)
 
 
 func _on_speed_up_timer_timeout() -> void:

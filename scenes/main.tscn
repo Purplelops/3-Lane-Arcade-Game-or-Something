@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgt4erjwd87a2"]
+[gd_scene load_steps=10 format=3 uid="uid://cgt4erjwd87a2"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_g36sn"]
-[ext_resource type="PackedScene" uid="uid://yv53eeuel8ho" path="res://player.tscn" id="1_sv3tm"]
-[ext_resource type="Script" path="res://Walls.gd" id="2_keaxf"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ybb3l"]
+[ext_resource type="PackedScene" uid="uid://yv53eeuel8ho" path="res://scenes/player.tscn" id="2_3472i"]
+[ext_resource type="Script" path="res://scripts/Walls.gd" id="3_h2amn"]
+[ext_resource type="AudioStream" uid="uid://ck03mwx1c8vm1" path="res://explosion.wav" id="4_c2e6b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfrfa"]
+albedo_color = Color(0.137534, 0.709126, 0.29122, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqy27"]
+albedo_color = Color(0.328572, 0.635471, 5.77569e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5ng"]
+albedo_color = Color(0.698327, 0.463447, 0.193027, 1)
 
 [sub_resource type="Environment" id="Environment_vuc8w"]
 background_mode = 1
@@ -14,13 +24,36 @@ fog_enabled = true
 font_size = 70
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_g36sn")
+script = ExtResource("1_ybb3l")
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="FloorLeft" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8.5)
+size = Vector3(3, 1, 27)
+material = SubResource("StandardMaterial3D_lfrfa")
+
+[node name="FloorCenter" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
-size = Vector3(9, 1, 27)
+size = Vector3(3, 1, 27)
+material = SubResource("StandardMaterial3D_wqy27")
 
-[node name="Player" parent="." instance=ExtResource("1_sv3tm")]
+[node name="FloorRight" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8.5)
+size = Vector3(3, 1, 27)
+material = SubResource("StandardMaterial3D_lfrfa")
+
+[node name="RightWall" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -8.5)
+size = Vector3(1, 2, 27)
+material = SubResource("StandardMaterial3D_uw5ng")
+
+[node name="LeftWall" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -8.5)
+size = Vector3(1, 2, 27)
+material = SubResource("StandardMaterial3D_uw5ng")
+
+[node name="Player" parent="." instance=ExtResource("2_3472i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -32,7 +65,7 @@ transform = Transform3D(-0.641457, -0.711106, 0.287858, -0.183013, 0.506236, 0.8
 shadow_enabled = true
 
 [node name="Walls" type="Node3D" parent="."]
-script = ExtResource("2_keaxf")
+script = ExtResource("3_h2amn")
 
 [node name="WallSpawnTimer" type="Timer" parent="Walls"]
 autostart = true
@@ -74,6 +107,9 @@ horizontal_alignment = 1
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c2e6b")
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Walls/WallSpawnTimer" to="Walls" method="_on_wall_spawn_timer_timeout"]

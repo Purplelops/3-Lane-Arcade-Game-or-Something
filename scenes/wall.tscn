@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr2w1yxads76w"]
 
-[ext_resource type="Script" path="res://wall.gd" id="1_mn3h1"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_l8r0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqets"]
 size = Vector3(3, 1, 1)
@@ -12,7 +12,7 @@ albedo_color = Color(1, 0.47451, 0.2, 1)
 material = SubResource("StandardMaterial3D_w6kcj")
 
 [node name="Wall" type="Area3D"]
-script = ExtResource("1_mn3h1")
+script = ExtResource("1_l8r0r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fqets")
