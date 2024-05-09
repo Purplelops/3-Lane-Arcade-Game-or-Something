@@ -1,6 +1,6 @@
 extends Area3D
 
-var speed
+var speed = 1
 
 func _process(delta: float) -> void:
 	position.z += speed * delta

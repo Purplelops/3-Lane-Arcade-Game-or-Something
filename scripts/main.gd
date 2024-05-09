@@ -9,15 +9,12 @@ func _ready() -> void:
 
 
 func _on_player_area_entered(area: Area3D) -> void:
-	if area.collision_layer == 1:
-		if $Player.alive:
-			_die()
-			$RestartButton.visible = true
-		else:
-			pass
+	if area.collision_layer == 1 and $Player.alive:
+		_die()
+		$RestartButton.visible = true
 	
 	# Collision with coin
-	if area.collision_layer == 2:
+	if area.collision_layer == 2 and $Player.alive:
 		area.queue_free()
 		$CoinPickupSound.play()
 
