@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgt4erjwd87a2"]
+[gd_scene load_steps=11 format=3 uid="uid://cgt4erjwd87a2"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ybb3l"]
 [ext_resource type="PackedScene" uid="uid://yv53eeuel8ho" path="res://scenes/player.tscn" id="2_3472i"]
@@ -18,16 +18,9 @@ albedo_color = Color(0.698327, 0.463447, 0.193027, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qkmq0"]
 font_size = 70
 
-[sub_resource type="LabelSettings" id="LabelSettings_qvdny"]
-font_size = 25
-font_color = Color(1, 1, 0, 1)
-
 [sub_resource type="Environment" id="Environment_y805a"]
 background_mode = 1
 background_color = Color(0.391605, 0.578691, 0.672685, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7i1os"]
-font_size = 70
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ybb3l")
@@ -111,31 +104,6 @@ text = "0
 label_settings = SubResource("LabelSettings_qkmq0")
 horizontal_alignment = 1
 
-[node name="HighscoreLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 193.0
-offset_right = 358.0
-offset_bottom = 37.0
-grow_horizontal = 2
-text = "Highscore"
-label_settings = SubResource("LabelSettings_qvdny")
-horizontal_alignment = 1
-
-[node name="HighscoreScoreLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 193.0
-offset_top = 31.0
-offset_right = 358.0
-offset_bottom = 68.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_qvdny")
-horizontal_alignment = 1
-
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -148,23 +116,6 @@ stream = ExtResource("5_fppyb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y805a")
-
-[node name="HelpLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -25.0
-offset_right = 90.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Move using
-A and D"
-label_settings = SubResource("LabelSettings_7i1os")
-horizontal_alignment = 1
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Walls/WallSpawnTimer" to="Walls" method="_on_wall_spawn_timer_timeout"]

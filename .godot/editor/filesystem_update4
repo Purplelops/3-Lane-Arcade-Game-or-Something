@@ -1,6 +1,5 @@
 res://scenes/main.tscn
+res://scripts/main.gd
 res://scenes/player.tscn
 res://scenes/coin.tscn
 res://scenes/wall.tscn
-res://scripts/wall.gd
-res://scripts/main.gd
