@@ -1,3 +1,6 @@
+CSGSphere3D
+CSGBox3D
+CSGCombiner3D
 Label
 Timer
 WorldEnvironment
@@ -9,6 +12,3 @@ AudioStreamPlayer
 Area3D
 MeshInstance3D
 CollisionShape3D
-Node3D
-Control
-Button

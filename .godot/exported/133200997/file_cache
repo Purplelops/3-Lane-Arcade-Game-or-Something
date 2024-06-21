@@ -1,6 +1,6 @@
-res://scenes/coin.tscn::25ed08efceb41fa456df20ec4dba769d::1715271662::res://.godot/exported/133200997/export-96b2131180b71dd158e52c5527d22dd4-coin.scn
+res://scenes/coin.tscn::25ed08efceb41fa456df20ec4dba769d::1716270056::res://.godot/exported/133200997/export-96b2131180b71dd158e52c5527d22dd4-coin.scn
 res://scenes/death_effect.tscn::8ccdbf0d614117301678e19ff2c1a621::1715152453::res://.godot/exported/133200997/export-a1de369fca38b349e11ebaeb184db05d-death_effect.scn
-res://scenes/main.tscn::5f1a2014ed5a6740aef6028629cb368e::1715272097::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
-res://scenes/player.tscn::94dfb10350d913126a2934775f21a938::1715271662::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
-res://scenes/wall.tscn::0e857f474fa985c133c7a9f569db506b::1715271662::res://.godot/exported/133200997/export-07690686bd1a72f71ae2b53bb79af276-wall.scn
+res://scenes/main.tscn::358f8c3e0b1763dac3b465aa10280da9::1716273983::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/player.tscn::94dfb10350d913126a2934775f21a938::1716270056::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://scenes/wall.tscn::0e857f474fa985c133c7a9f569db506b::1716270057::res://.godot/exported/133200997/export-07690686bd1a72f71ae2b53bb79af276-wall.scn
 res://default_bus_layout.tres::dff55cb482ff2216e40d1664e7a7be62::1715271675::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
